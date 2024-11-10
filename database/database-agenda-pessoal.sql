@@ -18,7 +18,7 @@ USE `meuBanco-v1` ;
 -- Table `meuBanco-v1`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `meuBanco-v1`.`users` (
-  `id_user` INT NOT NULL,
+  `id_user` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `password` VARCHAR(100) NOT NULL,
   `birth_date` DATE NULL,

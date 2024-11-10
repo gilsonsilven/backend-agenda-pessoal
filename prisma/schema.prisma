@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model contact_user {
+  id_user    Int
+  id_contact Int
+
+  @@id([id_user, id_contact])
+  @@index([id_contact], map: "fk_usuarios_has_contatos_contatos1_idx")
+  @@index([id_user], map: "fk_usuarios_has_contatos_usuarios1_idx")
+}
+
+model contacts {
+  id_contact Int       @id @default(autoincrement())
+  name       String    @db.VarChar(100)
+  telefone   BigInt?
+  datanasc   DateTime? @db.Date
+  email      String?   @db.VarChar(100)
+  endereco   String?   @db.VarChar(200)
+}
+
+model events {
+  id_event      Int      @id @default(autoincrement())
+  id_user       Int
+  title         String   @db.VarChar(50)
+  description   String?  @db.VarChar(500)
+  data          DateTime @db.Date
+  starting_hour DateTime @db.Time(0)
+  ending_hour   DateTime @db.Time(0)
+  address       String?  @db.VarChar(200)
+  contact_names String?  @db.VarChar(500)
+
+  @@index([id_user], map: "fk_events_users1")
+}
+
+model users {
+  id_user    Int       @id @default(autoincrement())
+  name       String    @db.VarChar(100)
+  password   String    @db.VarChar(100)
+  birth_date DateTime? @db.Date
+  emailprim  String    @unique(map: "email_prim_UNIQUE") @db.VarChar(100)
+  phone      BigInt?
+  address    String?   @db.VarChar(200)
+}
