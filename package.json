@@ -1,0 +1,19 @@
+{
+  "name": "backend-agenda-pessoal",
+  "version": "1.0.0",
+  "description": "backend do projeto final da disciplina de dw2",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "author": "Gilson Ventura",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
