@@ -8,6 +8,7 @@ export const create = async (user) => {
     })
 }
 
+/// arrumar depois
 export const getById = async (id) => {
     const user = await prisma.users.findUnique({
         where: {
